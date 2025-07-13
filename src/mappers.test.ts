@@ -1,4 +1,4 @@
-const mappers = require("./mappers.js");
+import * as mappers from "./mappers";
 
 const p = { 
     "mapping": {
@@ -6,8 +6,8 @@ const p = {
         "AWAY": "1",
         "INT": 1234353,
     }
-}
-const staticMapper = new mappers.StaticMapper(p)
+};
+const staticMapper = new mappers.StaticMapper(p);
 
 test.each`
     a           | expected
@@ -19,7 +19,7 @@ test.each`
     expect(staticMapper.map(a)).toBe(expected);
 });
 
-const remap = "Math.round((value - 30) * (100 - 0) / (99 - 30) + 0)"
+const remap = "Math.round((value - 30) * (100 - 0) / (99 - 30) + 0)";
 
 test.each`
     a                               | b         | expected
@@ -31,9 +31,8 @@ test.each`
 `('returns $expected when value is $b and expression is $a', ({a, b, expected}) => {
     const p = {
         "expression": a
-    }
-    const evalMapper = new mappers.EvalMapper(p)
+    };
+    const evalMapper = new mappers.EvalMapper(p);
 
     expect(evalMapper.map(b)).toBe(expected);
 });
-

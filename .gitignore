@@ -1,2 +1,16 @@
 node_modules/
 .DS_Store
+
+# Build output
+dist/
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
