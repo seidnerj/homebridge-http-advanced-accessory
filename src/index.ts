@@ -1,4 +1,4 @@
-import request from 'request';
+import axios, { AxiosResponse } from 'axios';
 import pollingtoevent from 'polling-to-event';
 import * as mappers from './mappers';
 import { registerCustomTypes } from './HomeKitExtensionTypes';
@@ -137,24 +137,33 @@ class HttpAdvancedAccessory {
 	}
 
 	private httpRequest(url: string, body: string, httpMethod: string, callback: (error: any, response: any, body: any) => void): void {
-		setTimeout(() => {
-			request({
-				url: url,
-				body: body,
-				method: httpMethod,
-				auth: {
-					user: this.auth.username,
-					pass: this.auth.password,
-					sendImmediately: this.auth.immediately
-				},
-				headers: {
-					Authorization: "Basic " + Buffer.from(this.auth.username + ":" + this.auth.password).toString("base64")
+		setTimeout(async () => {
+			try {
+				const config: any = {
+					url: url,
+					method: httpMethod,
+					data: body || undefined,
+					headers: {}
+				};
+
+				// Add authentication if provided
+				if (this.auth.username || this.auth.password) {
+					config.auth = {
+						username: this.auth.username,
+						password: this.auth.password
+					};
+					config.headers.Authorization = "Basic " + Buffer.from(this.auth.username + ":" + this.auth.password).toString("base64");
 				}
-			}, (error: any, response: any, body: any) => {
+
+				const response: AxiosResponse = await axios(config);
 				this.uriCalls--;
 				this.debugLog("httpRequest ended, current uriCalls is " + this.uriCalls);
-				callback(error, response, body);
-			});
+				callback(null, response, response.data);
+			} catch (error: any) {
+				this.uriCalls--;
+				this.debugLog("httpRequest ended with error, current uriCalls is " + this.uriCalls);
+				callback(error, null, null);
+			}
 		}, this.uriCalls * this.uriCallsDelay);
 		
 		this.uriCalls++;

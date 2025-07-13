@@ -1,5 +1,5 @@
 import * as xpath from "xpath";
-import { DOMParser } from "xmldom";
+import { DOMParser } from "@xmldom/xmldom";
 import JSONPath from "JSONPath";
 
 interface MapperParameters {
@@ -52,8 +52,8 @@ export class XPathMapper implements Mapper {
 	}
 
 	map(value: string): string {
-		const document = new DOMParser().parseFromString(value);
-		const result = xpath.select(this.xpath, document);
+		const document = new DOMParser().parseFromString(value, 'text/xml');
+		const result = xpath.select(this.xpath, document as any);
 
 		if (typeof result === "string") {
 			return result;

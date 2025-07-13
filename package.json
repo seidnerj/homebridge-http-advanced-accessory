@@ -8,8 +8,8 @@
     "homebridge-plugin"
   ],
   "engines": {
-    "node": ">=0.12.0",
-    "homebridge": ">=0.4.0"
+    "node": ">=18.0.0",
+    "homebridge": ">=1.6.0"
   },
   "author": "tasict",
   "repository": {
@@ -17,19 +17,17 @@
     "url": "git+https://github.com/staromeste/homebridge-http-advanced-accessory"
   },
   "dependencies": {
+    "@xmldom/xmldom": "^0.9.8",
+    "axios": "^1.10.0",
     "JSONPath": "^0.11.2",
     "polling-to-event": ">=2.0.2",
-    "request": "^2.65.0",
-    "xmldom": "^0.1.27",
-    "xpath": "0.0.24"
+    "xpath": "^0.0.34"
   },
   "homepage": "https://github.com/staromeste/homebridge-http-advanced-accessory#readme",
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.13",
-    "@types/request": "^2.48.12",
-    "@types/xmldom": "^0.1.34",
-    "jest": "^29.7.0",
+    "jest": "^30.0.4",
     "ts-jest": "^29.4.0",
     "typescript": "^5.8.3"
   },
