@@ -2,19 +2,23 @@
   "displayName": "HTTP Advanced Accessory",
   "name": "homebridge-http-advanced-accessory",
   "version": "2.0.0",
-  "description": "http plugin for homebridge: https://github.com/nfarina/homebridge",
+  "description": "Homebridge plugin to convert any device which exposes HTTP APIs into an HomeKit-compatible service.",
   "license": "ISC",
-  "keywords": [
-    "homebridge-plugin"
-  ],
-  "engines": {
-    "node": ">=18.0.0",
-    "homebridge": ">=1.6.0"
-  },
   "author": "tasict",
+  "maintainers": [
+    "tasict"
+  ],
+  "homepage": "https://github.com/staromeste/homebridge-http-advanced-accessory#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/staromeste/homebridge-http-advanced-accessory"
+  },
+  "bugs": {
+    "url": "https://github.com/staromeste/homebridge-http-advanced-accessory/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "homebridge": ">=1.6.0"
   },
   "dependencies": {
     "@xmldom/xmldom": "^0.9.8",
@@ -23,7 +27,6 @@
     "polling-to-event": ">=2.0.2",
     "xpath": "^0.0.34"
   },
-  "homepage": "https://github.com/staromeste/homebridge-http-advanced-accessory#readme",
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.13",
@@ -31,6 +34,14 @@
     "ts-jest": "^29.4.0",
     "typescript": "^5.8.3"
   },
+  "keywords": [
+    "homebridge",
+    "homebridge-plugin",
+    "homekit",
+    "http",
+    "api"
+  ],
+  "contributors": [],
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
